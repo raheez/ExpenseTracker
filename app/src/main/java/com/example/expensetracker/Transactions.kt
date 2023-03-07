@@ -1,0 +1,39 @@
+package com.example.expensetracker
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.text.DateFormat
+
+@Entity(tableName = "all_transactions")
+data class Transactions(
+
+    @ColumnInfo(name = "title")
+    var title: String,
+
+    @ColumnInfo(name = "amount")
+    var amount: String,
+
+    @ColumnInfo(name = "transactionType")
+    var transactionType: String,
+
+    @ColumnInfo(name = "tag")
+    var tag: String,
+
+    @ColumnInfo(name = "date")
+    var date: String,
+
+    @ColumnInfo(name = "note")
+    var note: String,
+
+    @ColumnInfo(name = "createdAt")
+    var createdAt: Long =
+        System.currentTimeMillis(),
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Int = 0,
+) {
+    val createdAtDateFormat:String
+    get() = DateFormat.getDateTimeInstance().format(createdAt)
+}
